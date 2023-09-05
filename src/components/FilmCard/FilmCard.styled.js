@@ -1,7 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const GlowingBtn = styled.button`
-  padding: 10px 30px;
+export const StyledSection = styled.section`
+  margin-top: 30px;
+  display: flex;
+  gap: 30px;
+  color: #fffad9;
+`;
+
+export const StyledBtn = styled.button`
+  padding: 5px 10px;
   background-color: #050801;
   color: #fffad9;
   font-weight: bold;
@@ -15,8 +22,8 @@ export const GlowingBtn = styled.button`
   &:hover {
     background: #fffad9;
     color: #050801;
-    box-shadow: 0 0 5px #fffad9, 0 0 25px #fffad9, 0 0 50px #fffad9,
-      0 0 70px #fffad9;
+    box-shadow: 0 0 5px #fffad9, 0 0 15px #fffad9, 0 0 30px #fffad9,
+      0 0 50px #fffad9;
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
   }
 `;
