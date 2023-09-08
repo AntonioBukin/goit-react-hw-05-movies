@@ -1,19 +1,17 @@
-import { ThreeDots } from "react-loader-spinner";
-import {LoaderStyled} from "../Loader/Loader.styled";
+// import RingLoader from 'react-spinners/RingLoader';
+// import { LoaderBackdrop } from './Loader.styled';
 
-export function Loader() {
-    return (
-        <LoaderStyled>
-            <ThreeDots
-            height="80"
-            width="80"
-            radius="9"
-            color="#fffad9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            wrapperClassName=""
-            visible={true}
-            />
-        </LoaderStyled>
-    )
-}
+// const Loader = () => {
+//   return (
+//     <LoaderBackdrop>
+//       <RingLoader
+//         color="rgba(214, 54, 160, 0.93)"
+//         size={150}
+//         cssOverride={{ position: 'absolute', top: '25%', left: '45%' }}
+//       />
+//     </LoaderBackdrop>
+//   );
+// };
+// export default Loader;
+
+

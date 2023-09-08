@@ -1,44 +1,58 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getReviews } from 'service/themoviedbApi';
-import { Text } from '../Cast/Cast.styled';
+import { getMovieReviews } from 'service/themoviedbApi';
+import no_images from '../../images/ImageNotFound.png';
 
-const ReviewsFilm = () => {
-  const [reviews, setReviews] = useState('');
-  const { id } = useParams();
+const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
+  const { movieId } = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const castSearch = async () => {
-      if (id) {
-        try {
-          const reviews = await getReviews(id);
-          setReviews(reviews);
-        } catch (error) {
-          console.log('error');
-        } finally {
-        }
+    const movieReviews = async () => {
+      setLoading(true);
+      try {
+        const data = await getMovieReviews(movieId);
+
+        setReviews(data.results);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
       }
-      return;
     };
-    castSearch();
-  }, [id]);
+    movieReviews();
+  }, [movieId]);
 
   return (
-    <section>
-      {reviews.length ? (
-        <ul>
-          {reviews.map(({ id, author, content }) => (
-            <li key={id}>
-              <h3>{author}</h3>
-              <Text>{content}</Text>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <Text>We couldn`t looking for that film</Text>
+    <>
+      {loading && <div>Loading...</div>}
+      <h2>Reviews</h2>
+      {!loading && reviews.length === 0 && (
+        <h3>We don't have any reviews for this movie.</h3>
       )}
-    </section>
+      <ul>
+        {reviews.map(
+          ({ author_details: { username, avatar_path }, content, id }) => (
+            <li key={id}>
+              <img
+                src={
+                  avatar_path
+                    ? `https://image.tmdb.org/t/p/w500${avatar_path}`
+                    : no_images
+                }
+                alt="{name}"
+                width={100}
+              />
+              <h3>{username}</h3>
+              -------------------------------------------------------
+              <p>{content}</p>
+            </li>
+          )
+        )}
+      </ul>
+    </>
   );
 };
 
-export default ReviewsFilm;
+export default Reviews;

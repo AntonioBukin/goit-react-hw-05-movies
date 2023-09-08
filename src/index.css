@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #6b4bf8;
 }
 
 code {
@@ -41,22 +42,22 @@ header {
 }
 
 
-input {
+/* input {
   border: solid;
   border-radius: 5px;
   transition: 0.5s;
   padding: 10px 30px;
   color: #fffad9;
-  background-color: #050801;
-}
+  background-color: #2f04f0;
+} */
 
-input:focus {
+/* input:focus {
   background: #fffad9;
   color: #050801;
   box-shadow: 0 0 5px #fffad9, 0 0 25px #fffad9, 0 0 50px #fffad9,
     0 0 70px #fffad9;
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-}
+} */
 
 main {
   width: 1200px;

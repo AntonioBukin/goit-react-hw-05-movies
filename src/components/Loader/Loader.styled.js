@@ -1,5 +1,5 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-export const LoaderStyled = styled.div`
-  text-align: center;
-`;
+// export const LoaderBackdrop = styled.div`
+//   text-align: center;
+// `;

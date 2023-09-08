@@ -1,24 +1,26 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
-import Layout from './Layout/Layout';
+import SharedLayout from './SharedLayout/SharedLayout';
 
 const Home = lazy(() => import('pages/Home'));
-const Films = lazy(() => import('pages/Films'));
-const FilmDetails = lazy(() => import('./FilmDetails/FilmDetails'));
+const Films = lazy(() => import('pages/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Rewiews/Reviews'));
 
-export const App = () => {
+const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        <Route path="films" element={<Films />} />
-        <Route path="films/:id" element={<FilmDetails />} />
+        <Route path="movies" element={<Films />} />
+        <Route path="movies/:movieId" element={<MovieDetails />} />
         <Route path="cast" element={<Cast />} />
-        <Route path="reviews" element={<Reviews />} />
+        <Route path="review" element={<Reviews />} />
       </Route>
-      <Route path="*" element={<div>ErrorNotFound</div>}></Route>
+      <Route path="*" element={<Home />}></Route>
     </Routes>
   );
 };
+
+export default App;

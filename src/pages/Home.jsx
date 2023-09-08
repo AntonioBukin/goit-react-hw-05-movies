@@ -1,30 +1,28 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from 'service/themoviedbApi';
-import FilmGallery from '../components/FilmGallery/FilmGallery';
+import MoviesList from '../components/MoviesList/MoviesList';
 
 const Home = () => {
-  const [films, setFilms] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const filmTrading = async () => {
+    const trendingMoviesList = async () => {
       try {
-        const film = await getTrending();
-        setFilms(film);
+        const data = await getTrending();
+        setMovies(data.results);
       } catch (error) {
-        console.log('eror');
-      } finally {
+        console.log(error.message);
       }
     };
 
-    filmTrading();
+    trendingMoviesList();
   }, []);
 
   return (
-    <ul>
-      {films.map(film => (
-        <FilmGallery key={film.id} film={film} />
-      ))}
-    </ul>
+    <main>
+      <h1>Trending film to you:</h1>
+      <MoviesList movies={movies} />
+    </main>
   );
 };
 
