@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { getTrending } from 'service/themoviedbApi';
 import MoviesList from '../components/MoviesList/MoviesList';
 
+
 const Home = () => {
   const [movies, setMovies] = useState([]);
-
+  
   useEffect(() => {
     const trendingMoviesList = async () => {
       try {
